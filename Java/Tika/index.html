@@ -1,0 +1,2210 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../JOGL/" rel="prev"/>
+<link href="../jBPM/" rel="next"/>
+<link href="https://pic.peo.pw/a/2023/01/12/63bfb934b1b06.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.3" name="generator"/>
+<title>Tika - 技术山</title>
+<link href="../../assets/stylesheets/main.6b71719e.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h224V368c0-26.5 21.5-48 48-48h112V96c0-35.3-28.7-64-64-64H64zm384 320H336c-8.8 0-16 7.2-16 16v112l32-32 64-64 32-32z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6S434.5.2 425.3 9.3L381.7 53c-48 48-113.1 75-181 75H64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64v128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352h8.7c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.4c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7v262.6C357.2 317.8 280.5 288 200.7 288H192v-96h8.7c79.8 0 156.5-29.8 215.3-83.3z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM288 352c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32 14.3 32 32 32 32-14.3 32-32z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.1 52.4 442.6 6.5c-1.9-3.9-6.1-6.5-10.5-6.5s-8.5 2.6-10.4 6.5l-16.5 45.9-46 16.8c-4.3 1.6-7.3 5.9-7.2 10.4 0 4.5 3 8.7 7.2 10.2l45.7 16.8 16.8 45.8c1.5 4.4 5.8 7.5 10.4 7.5s8.9-3.1 10.4-7.5l16.5-45.8 45.7-16.8c4.2-1.5 7.2-5.7 7.2-10.2 0-4.6-3-8.9-7.2-10.4l-45.6-16.8zm-132.4 53c-12.5-12.5-32.8-12.5-45.3 0l-2.9 2.9c-22-8-45.8-12.3-70.5-12.3C93.1 96 0 189.1 0 304s93.1 208 208 208 208-93.1 208-208c0-24.7-4.3-48.5-12.2-70.5l2.9-2.9c12.5-12.5 12.5-32.8 0-45.3l-80-80zM200 192c-57.4 0-104 46.6-104 104v8c0 8.8-7.2 16-16 16s-16-7.2-16-16v-8c0-75.1 60.9-136 136-136h8c8.8 0 16 7.2 16 16s-7.2 16-16 16h-8z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9V464c0 26.5 21.5 48 48 48h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48v-65.1zM224 256c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64 64 28.7 64 64zm128 64c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h128c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H160c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h128V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256c0-22.1-17.9-40-40-40s-40 17.9-40 40 17.9 40 40 40 40-17.9 40-40zm152 40c22.1 0 40-17.9 40-40s-17.9-40-40-40-40 17.9-40 40 17.9 40 40 40zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0h-32zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/></svg>');}</style>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../res/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="red" data-md-color-primary="red" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="技术山" class="md-header__button md-logo" data-md-component="logo" href="/" title="技术山">
+<img alt="logo" src="https://pic.peo.pw/a/2023/01/12/63bfb934b1b06.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            技术山
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Tika
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="切换到暗模式" class="md-option" data-md-color-accent="red" data-md-color-media="(prefers-color-scheme)" data-md-color-primary="red" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_3" hidden="" title="切换到暗模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
+</label>
+<input aria-label="切换到默认模式" class="md-option" data-md-color-accent="green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="green" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="切换到默认模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="切换到亮模式" class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_3" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="切换到亮模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+</form>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="选择当前语言" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="https://www.javatpoint.com/" hreflang="en">
+                    javatpoint
+                  </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="https://www.tboxn.com/" hreflang="">
+                    tbox导航
+                  </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="https://pdai.tech/" hreflang="">
+                    java全栈
+                  </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="https://objtube.github.io/front-end-roadmap/#/" hreflang="">
+                    前端路线
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<a aria-label="分享" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="分享">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../%E4%BB%BB%E5%8A%A1/%E6%97%A5%E5%B8%B8%E4%BB%BB%E5%8A%A1/">
+        任务
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/">
+        趋势技术
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../B.Tech%26MCA/">
+        B.Tech&amp;MCA
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../%E4%BA%91%E6%8A%80%E6%9C%AF/">
+        云技术
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../%E6%B5%8B%E8%AF%95/">
+        测试
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Python/">
+        Python
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../">
+        Java
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Database/">
+        Database
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Web/">
+        Web
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../PHP/">
+        PHP
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../office/">
+        office
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Net/">
+        Net
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/">
+        热门&amp;知识山
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../%E5%85%B6%E4%BB%96%E7%BD%91%E7%AB%99/">
+        其他网站
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="技术山" class="md-nav__button md-logo" data-md-component="logo" href="/" title="技术山">
+<img alt="logo" src="https://pic.peo.pw/a/2023/01/12/63bfb934b1b06.png"/>
+</a>
+    技术山
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label aria-expanded="false" class="md-nav__link" for="__nav_1" tabindex="0">
+          任务
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="任务" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          任务
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BB%BB%E5%8A%A1/%E6%97%A5%E5%B8%B8%E4%BB%BB%E5%8A%A1/">
+        日常任务
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BB%BB%E5%8A%A1/%E5%AD%A6%E4%B9%A0%E4%BB%BB%E5%8A%A1/">
+        学习任务
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BB%BB%E5%8A%A1/%E6%AF%95%E4%B8%9A%E4%BB%BB%E5%8A%A1/">
+        毕业任务
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BB%BB%E5%8A%A1/%E7%AB%9E%E8%B5%9B/">
+        竞赛
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BB%BB%E5%8A%A1/%E9%98%B6%E6%AE%B5%E4%BB%BB%E5%8A%A1/">
+        阶段任务
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BB%BB%E5%8A%A1/%E7%BB%88%E6%9E%81%E4%BB%BB%E5%8A%A1/">
+        终极任务
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/">趋势技术</a>
+<label for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="趋势技术" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          趋势技术
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+        人工智能
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/AWS/">
+        AWS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/Selenium/">
+        Selenium
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/%E4%BA%91%E8%AE%A1%E7%AE%97/">
+        云计算
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/Hadoop/">
+        Hadoop
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/ReactJS/">
+        ReactJS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">
+        数据科学
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/Angular%207/">
+        Angular 7
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/%E5%8C%BA%E5%9D%97%E9%93%BE/">
+        区块链
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/Git/">
+        Git
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+        机器学习
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E8%B6%8B%E5%8A%BF%E6%8A%80%E6%9C%AF/DevOps/">
+        DevOps
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../B.Tech%26MCA/">B.Tech&amp;MCA</a>
+<label for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="B.Tech&amp;MCA" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          B.Tech&amp;MCA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/DBMS/">
+        DBMS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+        数据结构
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/DAA/">
+        DAA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+        操作系统
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+        计算机网络
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/%E7%BC%96%E8%AF%91%E5%99%A8%E8%AE%BE%E8%AE%A1/">
+        编译器设计
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+        计算机组成原理
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">
+        离散数学
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/Ethical%20Hacking%E9%81%93%E5%BE%B7%E9%BB%91%E5%AE%A2/">
+        Ethical Hacking道德黑客
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">
+        计算机图形学
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+        软件工程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/web%E5%B7%A5%E7%A8%8B/">
+        Web工程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/Cyber%20Security%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">
+        Cyber Security网络安全
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/Automata/">
+        Automata
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/c/">
+        C
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/C%2B%2B/">
+        C++
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/Java/">
+        Java
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/Net/">
+        Net
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/Python/">
+        Python
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/Programs/">
+        Programs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/">
+        控制系统
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/Data%20Mining%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+        Data Mining数据挖掘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../B.Tech%26MCA/Data%20Warehouse/">
+        Data Warehouse
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../%E4%BA%91%E6%8A%80%E6%9C%AF/">云技术</a>
+<label for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="云技术" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          云技术
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BA%91%E6%8A%80%E6%9C%AF/%E4%BA%91%E8%AE%A1%E7%AE%97/">
+        云计算
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BA%91%E6%8A%80%E6%9C%AF/AWS/">
+        AWS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BA%91%E6%8A%80%E6%9C%AF/Azure/">
+        Azure
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BA%91%E6%8A%80%E6%9C%AF/Salesforce/">
+        Salesforce
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E4%BA%91%E6%8A%80%E6%9C%AF/%E8%B0%B7%E6%AD%8C%E4%BA%91/">
+        谷歌云
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../%E6%B5%8B%E8%AF%95/">测试</a>
+<label for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="测试" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          测试
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+        软件测试
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Selenium/">
+        Selenium
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Agile/">
+        Agile
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/JIRA/">
+        JIRA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Bugzilla/">
+        Bugzilla
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/ETL/">
+        ETL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/JMeter/">
+        JMeter
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/QA/">
+        QA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/TestNG/">
+        TestNG
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Automation%20Anywhere/">
+        Automation Anywhere
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/UiPath/">
+        UiPath
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Selenium%20Python/">
+        Selenium Python
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Postman/">
+        Postman
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Junit/">
+        Junit
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/SoapUI/">
+        SoapUI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/RPA/">
+        RPA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Manual%20Testing/">
+        Manual Testing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Cucumber/">
+        Cucumber
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E6%B5%8B%E8%AF%95/Appium/">
+        Appium
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../Python/">Python</a>
+<label for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Python" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Python/">
+        Python
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Django/">
+        Django
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Flask/">
+        Flask
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/NumPy/">
+        NumPy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Tkinter/">
+        Tkinter
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Pytorch/">
+        Pytorch
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Pygame/">
+        Pygame
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Scipy/">
+        Scipy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Pandas/">
+        Pandas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/OpenCV/">
+        OpenCV
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Matplotlib/">
+        Matplotlib
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Openpyxl/">
+        Openpyxl
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Selenium%20Python/">
+        Selenium Python
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Kivy/">
+        Kivy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Python/Jupyter/">
+        Jupyter
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../">Java</a>
+<label for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Java" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Java/">
+        Java
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Servlet/">
+        Servlet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JSP/">
+        JSP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Boot/">
+        Spring Boot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Framework/">
+        Spring Framework
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Hibernate/">
+        Hibernate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Design%20Patterns/">
+        Design Patterns
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Java%20Web%20Services/">
+        Java Web Services
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Struts/">
+        Struts
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../RESTful%20Web%20Services/">
+        RESTful Web Services
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Microservices/">
+        Microservices
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Spring%20Cloud/">
+        Spring Cloud
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Jenkins/">
+        Jenkins
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Java%20Swing/">
+        Java Swing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JavaFX/">
+        JavaFX
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Maven/">
+        Maven
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Apache%20POI/">
+        Apache POI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JSF/">
+        JSF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../EJB/">
+        EJB
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JSTL/">
+        JSTL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Primefaces/">
+        Primefaces
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JDB/">
+        JDB
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Apache%20Ant/">
+        Apache Ant
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JPA/">
+        JPA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Java%20Mail/">
+        Java Mail
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Jsoup/">
+        Jsoup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JAXB/">
+        JAXB
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Java%20IO/">
+        Java IO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Java%20AWT/">
+        Java AWT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Collections/">
+        Collections
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Java%20Date/">
+        Java Date
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../RichFaces/">
+        RichFaces
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JFreeChart/">
+        JFreeChart
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Java%209/">
+        Java 9
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Java%208/">
+        Java 8
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../JOGL/">
+        JOGL
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Tika
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../jBPM/">
+        jBPM
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../PDFBox/">
+        PDFBox
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Intellij%20Idea/">
+        Intellij Idea
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" id="__nav_8" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../Database/">Database</a>
+<label for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Database" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/SQL/">
+        SQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/PL%26SQL/">
+        PL&amp;SQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/MySQL/">
+        MySQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/MongoDB/">
+        MongoDB
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/PostgreSQL/">
+        PostgreSQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/SQL%20Server/">
+        SQL Server
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/Oracle/">
+        Oracle
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/Cassandra/">
+        Cassandra
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/SQLite/">
+        SQLite
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/Neo4j/">
+        Neo4j
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/CouchDB/">
+        CouchDB
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/MariaDB/">
+        MariaDB
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/DB2/">
+        DB2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/PouchDB/">
+        PouchDB
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Database/Redis/">
+        Redis
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" id="__nav_9" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../Web/">Web</a>
+<label for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Web" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+          Web
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/HTML/">
+        HTML
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/CSS/">
+        CSS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/JavaScript/">
+        JavaScript
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/jQuery/">
+        jQuery
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/jQuery%20UI/">
+        jQuery UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/PHP/">
+        PHP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/XML/">
+        XML
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/JSON/">
+        JSON
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/AJAX/">
+        AJAX
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Web%20Serv-/">
+        Web Serv 
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Bootstrap/">
+        Bootstrap
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/AngularJS/">
+        AngularJS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Node.js/">
+        Node.js
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Express.js/">
+        Express.js
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Backbone/">
+        Backbone
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Sass/">
+        Sass
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Less/">
+        Less
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/XSLT/">
+        XSLT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/XPath/">
+        XPath
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/XQuery/">
+        XQuery
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/XHTML/">
+        XHTML
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Pure.CSS/">
+        Pure.CSS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Materialize/">
+        Materialize
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/Framework7/">
+        Framework7
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/HTTP/">
+        HTTP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Web/DHTML/">
+        DHTML
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" id="__nav_10" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../PHP/">PHP</a>
+<label for="__nav_10">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="PHP" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_10">
+<span class="md-nav__icon md-icon"></span>
+          PHP
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PHP/PHP/">
+        PHP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PHP/Laravel/">
+        Laravel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PHP/WordPress/">
+        WordPress
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PHP/CodeIgniter/">
+        CodeIgniter
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PHP/Magento%202/">
+        Magento 2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PHP/Joomla/">
+        Joomla
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PHP/Phalcon/">
+        Phalcon
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PHP/YII/">
+        YII
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PHP/Xampp/">
+        Xampp
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" id="__nav_11" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../office/">office</a>
+<label for="__nav_11">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="office" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_11">
+<span class="md-nav__icon md-icon"></span>
+          office
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/Excel/">
+        Excel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/MS%20Word/">
+        MS Word
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/Powerpoint/">
+        Powerpoint
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/OneNote/">
+        OneNote
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/VBA/">
+        VBA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/Power%20BI/">
+        Power BI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/QlikView/">
+        QlikView
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/Powershell/">
+        Powershell
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/Classroom/">
+        Classroom
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../office/Smartsheet/">
+        Smartsheet
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" id="__nav_12" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../Net/">Net</a>
+<label for="__nav_12">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Net" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_12">
+<span class="md-nav__icon md-icon"></span>
+          Net
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/Net/">
+        Net
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/C%23/">
+        C#
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/ASP.NET/">
+        ASP.NET
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/ADO.NET/">
+        ADO.NET
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/WPF/">
+        WPF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/SSRS/">
+        SSRS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/SSIS/">
+        SSIS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/Web%20API/">
+        Web API
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/LINQ/">
+        LINQ
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/SharePoint/">
+        SharePoint
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/F%23/">
+        F#
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Net/VB.NET/">
+        VB.NET
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" id="__nav_13" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/">热门&amp;知识山</a>
+<label for="__nav_13">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="热门&amp;知识山" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_13">
+<span class="md-nav__icon md-icon"></span>
+          热门&amp;知识山
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/C/">
+        C
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/C%2B%2B/">
+        C++
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Android/">
+        Android
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Computer/">
+        Computer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Linux/">
+        Linux
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/vi%20editor/">
+        Vi editor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Embedded/">
+        Embedded
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Robotics/">
+        Robotics
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/SEO/">
+        SEO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Shell%20Script/">
+        Shell Script
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/MathML/">
+        MathML
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Perl/">
+        Perl
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Scala/">
+        Scala
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Ruby/">
+        Ruby
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Rails/">
+        Rails
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Docker/">
+        Docker
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/GWT/">
+        GWT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Go%20Lang/">
+        Go Lang
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/On%20Ubuntu/">
+        On Ubuntu
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/On%20Mac/">
+        On Mac
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/On%20CentOS/">
+        On CentOS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/SVG/">
+        SVG
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Polymer/">
+        Polymer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Kotlin/">
+        Kotlin
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Rust/">
+        Rust
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Control%20System/">
+        Control System
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/TypeScript/">
+        TypeScript
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Pig/">
+        Pig
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Swift/">
+        Swift
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Spark/">
+        Spark
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/DIP/">
+        DIP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Mobile%20Communication/">
+        Mobile Communication
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/SAS/">
+        SAS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Electrical%20Machines/">
+        Electrical Machines
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Hive/">
+        Hive
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Tableau/">
+        Tableau
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/NGINX/">
+        NGINX
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Log4j/">
+        Log4j
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Bash/">
+        Bash
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/R/">
+        R
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Git/">
+        Git
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Wireshark/">
+        Wireshark
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Xamarin/">
+        Xamarin
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Tensorflow/">
+        Tensorflow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/VHDL/">
+        VHDL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Ionic/">
+        None
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/NLP/">
+        NLP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Latex/">
+        Latex
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Inkscape/">
+        Inkscape
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Matlab/">
+        Matlab
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/GitHub/">
+        GitHub
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Unity/">
+        Unity
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/SVN/">
+        SVN
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Reinforcement/">
+        Reinforcement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Kafka/">
+        Kafka
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Kali%20Linux/">
+        Kali Linux
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Talend/">
+        Talend
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Mockito/">
+        Mockito
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Ansible/">
+        Ansible
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Firebase/">
+        Firebase
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Cobol/">
+        Cobol
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/ES6/">
+        ES6
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Flutter/">
+        Flutter
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Gradle/">
+        Gradle
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/UML/">
+        UML
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/ANN/">
+        ANN
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Tally/">
+        Tally
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Godot/">
+        Godot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/AutoCad/">
+        AutoCad
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Kubernetes/">
+        Kubernetes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Puppet/">
+        Puppet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Math/">
+        Math
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/GDB/">
+        GDB
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Fuzzy%20Logic/">
+        Fuzzy Logic
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Proc%E2%80%BBC/">
+        Proc※C
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/SMM/">
+        SMM
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Affiliate%20Marketing/">
+        Affiliate Marketing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Arduino/">
+        Arduino
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Digital%20Electronics/">
+        Digital Electronics
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Adwords/">
+        Adwords
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Ext.js/">
+        Ext.js
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/GraphQL/">
+        GraphQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/IoT/">
+        IoT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Gmail/">
+        Gmail
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Vue.js/">
+        Vue.js
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Landing%20Page/">
+        Landing Page
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/PLC/">
+        PLC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Illustrator/">
+        Illustrator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Memcached/">
+        Memcached
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Solr/">
+        Solr
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Gimp/">
+        Gimp
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Verilog/">
+        Verilog
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Teradata/">
+        Teradata
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/PhoneGap/">
+        PhoneGap
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Bootstrap%204/">
+        Bootstrap 4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Chrome/">
+        Chrome
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Dart/">
+        Dart
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Adobe%20After%20Effects/">
+        Adobe After Effects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Adobe%20Dreamweaver/">
+        Adobe Dreamweaver
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Adobe%20CorelDRAW/">
+        Adobe CorelDRAW
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Adobe%20Indesign/">
+        Adobe Indesign
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Audacity/">
+        Audacity
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Blue%20Prism/">
+        Blue Prism
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Python%20CGI%20Programming/">
+        Python CGI Programming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Cordova/">
+        Cordova
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/d3.js/">
+        D3.js
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Dialogflow/">
+        Dialogflow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Ionic/">
+        Ionic
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/ITIL/">
+        ITIL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/IOS%20with%20Swift/">
+        IOS with Swift
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Angular%20Material/">
+        Angular Material
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Deep%20Learning/">
+        Deep Learning
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Google%20Colab/">
+        Google Colab
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Graph%20Theory/">
+        Graph Theory
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Groovy/">
+        Groovy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Group%20Discussion/">
+        Group Discussion
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Informatica/">
+        Informatica
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Digital%20Marketing/">
+        Digital Marketing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Elasticsearch/">
+        Elasticsearch
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Entity%20Framework/">
+        Entity Framework
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Firewall/">
+        Firewall
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Functional%20Programming/">
+        Functional Programming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Photoshop/">
+        Photoshop
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Prolog/">
+        Prolog
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/PWA/">
+        PWA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Pyspark/">
+        Pyspark
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Nagios/">
+        Nagios
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Nifi/">
+        Nifi
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Online%20Marketing/">
+        Online Marketing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/OpenStack/">
+        OpenStack
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/PDF/">
+        PDF
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Kibana/">
+        Kibana
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Mean%20Stack/">
+        Mean Stack
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Microprocessor/">
+        Microprocessor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Mobile%20Computing/">
+        Mobile Computing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E7%83%AD%E9%97%A8%26%E7%9F%A5%E8%AF%86%E5%B1%B1/Mobile%20Testing/">
+        Mobile Testing
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" id="__nav_14" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../%E5%85%B6%E4%BB%96%E7%BD%91%E7%AB%99/">其他网站</a>
+<label for="__nav_14">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="其他网站" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_14">
+<span class="md-nav__icon md-icon"></span>
+          其他网站
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E5%85%B6%E4%BB%96%E7%BD%91%E7%AB%99/tutorialspoint/">
+        Tutorialspoint
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E5%85%B6%E4%BB%96%E7%BD%91%E7%AB%99/c%26cpp%E7%B1%BB%E5%BA%93/">
+        C&amp;cpp类库
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../%E5%85%B6%E4%BB%96%E7%BD%91%E7%AB%99/c%26cpp%E7%B1%BB%E5%BA%93_2/">
+        C&amp;cpp类库 2
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            回到页面顶部
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: JOGL" class="md-footer__link md-footer__link--prev" href="../JOGL/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                  上一页
+                </span>
+                JOGL
+              </div>
+</div>
+</a>
+<a aria-label="下一页: jBPM" class="md-footer__link md-footer__link--next" href="../jBPM/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                  下一页
+                </span>
+                jBPM
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2022 - 2023 travis
+    </div>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="链接url地址" rel="noopener" target="_blank" title="标识名">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="链接url地址" rel="noopener" target="_blank" title="标识名">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "content.action.edit", "content.action.view", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../assets/javascripts/bundle.ba449ae6.min.js"></script>
+<script src="../../res/extra.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
